@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel administrativo da ONG S.E.R.">
+  <title>Painel Administrativo - ONG S.E.R.</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background-color: #f5f5f5; }
+    
+    .dashboard {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #0a6e31;
+      color: white;
+      padding: 20px 0;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    
+    .sidebar-header {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1 );
+      text-align: center;
+    }
+    
+    .sidebar-header h2 {
+      margin-bottom: 5px;
+    }
+    
+    .sidebar-menu {
+      padding: 20px 0;
+    }
+    
+    .sidebar-menu h3 {
+      padding: 0 20px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+    }
+    
+    .sidebar-menu ul {
+      list-style: none;
+    }
+    
+    .sidebar-menu li {
+      margin-bottom: 5px;
+    }
+    
+    .sidebar-menu a {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    
+    .sidebar-menu a:hover, .sidebar-menu a.active {
+      background-color: rgba(255,255,255,0.1);
+    }
+    
+    .sidebar-menu i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .sidebar-footer {
+      padding: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #fff;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0a6e31;
+      font-weight: bold;
+    }
+    
+    .user-details {
+      flex: 1;
+    }
+    
+    .user-name {
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+    
+    .user-role {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    
+    .logout-btn {
+      margin-top: 10px;
+      padding: 8px;
+      background-color: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 4px;
+      color: white;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .logout-btn:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+    
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 250px;
+      padding: 20px;
+    }
+    
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .page-title h1 {
+      color: #0a6e31;
+      font-size: 1.8rem;
+    }
+    
+    .page-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .btn {
+      padding: 8px 15px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .btn-primary {
+      background-color: #0a6e31;
+      color: white;
+    }
+    
+    .btn-secondary {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    
+    /* Dashboard Cards */
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .card-title {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: rgba(10, 110, 49, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0a6e31;
+    }
+    
+    .card-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .card-description {
+      font-size: 0.85rem;
+      color: #777;
+    }
+    
+    /* Recent Activities */
+    .recent-activities {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .section-title {
+      font-size: 1.2rem;
+      color: #0a6e31;
+    }
+    
+    .view-all {
+      color: #0a6e31;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .activity-list {
+      list-style: none;
+    }
+    
+    .activity-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+    }
+    
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    
+    .activity-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(10, 110, 49, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0a6e31;
+      margin-right: 15px;
+    }
+    
+    .activity-details {
+      flex: 1;
+    }
+    
+    .activity-title {
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    
+    .activity-time {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    
+    .activity-status {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .status-completed {
+      background-color: rgba(25, 135, 84, 0.1);
+      color: #198754;
+    }
+    
+    .status-pending {
+      background-color: rgba(255, 193, 7, 0.1);
+      color: #ffc107;
+    }
+    
+    /* Upcoming Events */
+    .upcoming-events {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+    }
+    
+    .event-list {
+      list-style: none;
+    }
+    
+    .event-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+    }
+    
+    .event-item:last-child {
+      border-bottom: none;
+    }
+    
+    .event-date {
+      width: 60px;
+      height: 60px;
+      background-color: #0a6e31;
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+    }
+    
+    .event-day {
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 1;
+    }
+    
+    .event-month {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+    
+    .event-details {
+      flex: 1;
+    }
+    
+    .event-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .event-info {
+      font-size: 0.85rem;
+      color: #777;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .event-info i {
+      margin-right: 5px;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .sidebar {
+        width: 200px;
+      }
+      .main-content {
+        margin-left: 200px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .dashboard {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .sidebar-footer {
+        position: relative;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .dashboard-cards {
+        grid-template-columns: 1fr;
+      }
+      .event-info {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>ONG S.E.R.</h2>
+        <p>Painel Administrativo</p>
+      </div>
+      
+      <div class="sidebar-menu">
+        <h3>Menu Principal</h3>
+        <ul>
+          <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="#"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+          <li><a href="#"><i class="fas fa-users"></i> Voluntários</a></li>
+          <li><a href="#"><i class="fas fa-hand-holding-heart"></i> Doações</a></li>
+          <li><a href="#"><i class="fas fa-images"></i> Galeria</a></li>
+        </ul>
+        
+        <h3>Administração</h3>
+        <ul>
+          <li><a href="#"><i class="fas fa-file-alt"></i> Relatórios</a></li>
+          <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+          <li><a href="#"><i class="fas fa-user-shield"></i> Usuários</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <span>MA</span>
+          </div>
+          <div class="user-details">
+            <div class="user-name">Maria Administradora</div>
+            <div class="user-role">Administrador</div>
+          </div>
+        </div>
+        <button class="logout-btn" id="logoutBtn">
+          <i class="fas fa-sign-out-alt"></i> Sair
+        </button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Dashboard</h1>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-secondary"><i class="fas fa-download"></i> Exportar</button>
+          <button class="btn btn-primary"><i class="fas fa-plus"></i> Novo Evento</button>
+        </div>
+      </div>
+      
+      <!-- Dashboard Cards -->
+      <div class="dashboard-cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">VOLUNTÁRIOS ATIVOS</div>
+            <div class="card-icon">
+              <i class="fas fa-users"></i>
+            </div>
+          </div>
+          <div class="card-value">42</div>
+          <div class="card-description">+5 novos este mês</div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">DOAÇÕES RECEBIDAS</div>
+            <div class="card-icon">
+              <i class="fas fa-hand-holding-heart"></i>
+            </div>
+          </div>
+          <div class="card-value">R$ 12.580</div>
+          <div class="card-description">+15% em relação ao mês anterior</div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">PESSOAS IMPACTADAS</div>
+            <div class="card-icon">
+              <i class="fas fa-smile"></i>
+            </div>
+          </div>
+          <div class="card-value">1.250</div>
+          <div class="card-description">Através de 8 programas</div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">EVENTOS REALIZADOS</div>
+            <div class="card-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+          </div>
+          <div class="card-value">18</div>
+          <div class="card-description">3 eventos agendados</div>
+        </div>
+      </div>
+      
+      <!-- Recent Activities -->
+      <div class="recent-activities">
+        <div class="section-header">
+          <h2 class="section-title">Atividades Recentes</h2>
+          <a href="#" class="view-all">Ver todas</a>
+        </div>
+        
+        <ul class="activity-list">
+          <li class="activity-item">
+            <div class="activity-icon">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="activity-details">
+              <div class="activity-title">Novo voluntário cadastrado</div>
+              <div class="activity-time">Hoje, 14:30</div>
+            </div>
+            <span class="activity-status status-completed">Concluído</span>
+          </li>
+          
+          <li class="activity-item">
+            <div class="activity-icon">
+              <i class="fas fa-donate"></i>
+            </div>
+            <div class="activity-details">
+              <div class="activity-title">Doação recebida de Empresa XYZ</div>
+              <div class="activity-time">Ontem, 10:15</div>
+            </div>
+            <span class="activity-status status-completed">Concluído</span>
+          </li>
+          
+          <li class="activity-item">
+            <div class="activity-icon">
+              <i class="fas fa-calendar-plus"></i>
+            </div>
+            <div class="activity-details">
+              <div class="activity-title">Novo evento criado: Feira Literária</div>
+              <div class="activity-time">Ontem, 09:45</div>
+            </div>
+            <span class="activity-status status-pending">Pendente</span>
+          </li>
+          
+          <li class="activity-item">
+            <div class="activity-icon">
+              <i class="fas fa-image"></i>
+            </div>
+            <div class="activity-details">
+              <div class="activity-title">Novas fotos adicionadas à galeria</div>
+              <div class="activity-time">15/05/2025, 16:20</div>
+            </div>
+            <span class="activity-status status-completed">Concluído</span>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Upcoming Events -->
+      <div class="upcoming-events">
+        <div class="section-header">
+          <h2 class="section-title">Próximos Eventos</h2>
+          <a href="#" class="view-all">Ver todos</a>
+        </div>
+        
+        <ul class="event-list">
+          <li class="event-item">
+            <div class="event-date">
+              <div class="event-day">10</div>
+              <div class="event-month">Jun</div>
+            </div>
+            <div class="event-details">
+              <div class="event-title">Feira Letras que Libertam</div>
+              <div class="event-info">
+                <span><i class="fas fa-clock"></i> 14:00 - 18:00</span>
+                <span><i class="fas fa-map-marker-alt"></i> Praça Central</span>
+              </div>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-date">
+              <div class="event-day">15</div>
+              <div class="event-month">Jun</div>
+            </div>
+            <div class="event-details">
+              <div class="event-title">Workshop de Empreendedorismo</div>
+              <div class="event-info">
+                <span><i class="fas fa-clock"></i> 09:00 - 12:00</span>
+                <span><i class="fas fa-map-marker-alt"></i> Sede da ONG</span>
+              </div>
+            </div>
+          </li>
+          
+          <li class="event-item">
+            <div class="event-date">
+              <div class="event-day">22</div>
+              <div class="event-month">Jun</div>
+            </div>
+            <div class="event-details">
+              <div class="event-title">Distribuição de Tablets - Inclusão Digital</div>
+              <div class="event-info">
+                <span><i class="fas fa-clock"></i> 10:00 - 16:00</span>
+                <span><i class="fas fa-map-marker-alt"></i> Escola Municipal</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Script para logout
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      if (confirm('Deseja realmente sair?')) {
+        window.location.href = 'login.html';
+      }
+    });
+  </script>
+</body>
+</html>
