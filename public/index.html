@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Faça sua doação para a ONG S.E.R. e ajude a transformar vidas através da educação, acolhimento e protagonismo.">
-  <title>Doações - ONG S.E.R.</title>
+  <meta name="description" content="ONG S.E.R. - Onde você supera seus limites, aprende a empreender e realiza seus sonhos. Transformando vidas através da educação, acolhimento e protagonismo desde 2003.">
+  <title>ONG S.E.R.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; }
-    
+    body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; }
+    header {
+      background: #0a6e31;
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.8rem; margin-bottom: 10px; }
+    header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
     nav {
       background: #0a6e31;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1 );
@@ -21,700 +28,219 @@
       top: 0;
       z-index: 10;
     }
-    
     nav a {
       margin: 0 15px;
-      color: #fff;
+      color: white;
       text-decoration: none;
       font-weight: 600;
+      transition: opacity 0.3s;
     }
-    
-    .hero {
-      background: linear-gradient(rgba(10, 110, 49, 0.9), rgba(10, 110, 49, 0.9)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' ) center/cover no-repeat;
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-    }
-    
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto 30px;
-    }
-    
-    .container {
+    nav a:hover { opacity: 0.8; }
+    section {
+      padding: 60px 20px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 60px 20px;
     }
-    
-    .section-title {
-      font-size: 2rem;
-      color: #0a6e31;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    
-    .section-subtitle {
-      font-size: 1.2rem;
+    section h2 {
       text-align: center;
       margin-bottom: 40px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .impact-stats {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin: 40px 0;
-    }
-    
-    .stat-item {
-      text-align: center;
-      padding: 20px;
-      width: 200px;
-    }
-    
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
       color: #0a6e31;
-      margin-bottom: 10px;
+      font-size: 2rem;
     }
-    
-    .stat-label {
-      font-size: 1rem;
-    }
-    
-    .donation-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin: 40px 0;
-    }
-    
-    .donation-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      padding: 30px;
-      width: 300px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .donation-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    
-    .donation-card h3 {
-      color: #0a6e31;
-      margin-bottom: 15px;
-    }
-    
-    .donation-card p {
-      margin-bottom: 20px;
-      min-height: 80px;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #0a6e31;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    
-    .btn:hover {
-      background-color: #08802e;
-    }
-    
-    .btn-outline {
-      background-color: transparent;
-      border: 2px solid #0a6e31;
-      color: #0a6e31;
-    }
-    
-    .btn-outline:hover {
-      background-color: #0a6e31;
-      color: white;
-    }
-    
-    .testimonials {
-      background-color: #f0f8f3;
-      padding: 60px 20px;
-      margin: 60px 0;
-    }
-    
-    .testimonial-grid {
+    .quem-somos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .testimonial-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      padding: 25px;
-      position: relative;
-    }
-    
-    .testimonial-text {
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-    
-    .testimonial-author {
-      display: flex;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       align-items: center;
     }
-    
-    .author-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 15px;
-      object-fit: cover;
-    }
-    
-    .author-info h4 {
-      margin-bottom: 5px;
-    }
-    
-    .author-info p {
-      font-size: 0.9rem;
-      color: #666;
-    }
-    
-    .quote-icon {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
-      color: #e6f2ec;
-    }
-    
-    .volunteer-section {
-      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' ) center/cover no-repeat;
-      padding: 60px 20px;
+    .quem-somos img {
+      width: 100%;
       border-radius: 10px;
-      margin: 40px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    
-    .volunteer-content {
+    .quem-somos-texto h3 {
+      color: #0a6e31;
+      margin-bottom: 20px;
+    }
+    .quem-somos-texto p {
+      margin-bottom: 15px;
+    }
+    .fotos-acoes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .fotos-acoes img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .fotos-acoes img:hover {
+      transform: scale(1.05);
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
       max-width: 600px;
       margin: 0 auto;
     }
-    
-    .volunteer-form {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    
-    .form-control {
-      width: 100%;
+    input, textarea {
       padding: 12px;
       border: 1px solid #ddd;
       border-radius: 5px;
-      font-family: 'Inter', sans-serif;
+      font-family: inherit;
     }
-    
-    .form-check {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 15px;
-    }
-    
-    .form-check input {
-      margin-right: 10px;
-      margin-top: 5px;
-    }
-    
-    .trust-badges {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin: 60px 0;
-    }
-    
-    .badge-item {
-      text-align: center;
-      width: 150px;
-    }
-    
-    .badge-item img {
-      height: 60px;
-      margin-bottom: 10px;
-      filter: grayscale(100%);
-      opacity: 0.7;
-      transition: filter 0.3s ease, opacity 0.3s ease;
-    }
-    
-    .badge-item:hover img {
-      filter: grayscale(0%);
-      opacity: 1;
-    }
-    
-    .badge-item p {
-      font-size: 0.8rem;
-      color: #666;
-    }
-    
-    .faq-section {
-      max-width: 800px;
-      margin: 60px auto;
-    }
-    
-    .faq-item {
-      margin-bottom: 20px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 20px;
-    }
-    
-    .faq-question {
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #0a6e31;
+    button {
+      background: #0a6e31;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
       cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-weight: 600;
+      transition: background 0.3s;
     }
-    
-    .faq-answer {
-      padding-top: 10px;
-    }
-    
+    button:hover { background: #085025; }
     footer {
       background: #0a6e31;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: 20px;
+      margin-top: 60px;
     }
-    
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
-      text-align: left;
-    }
-    
-    .footer-column h3 {
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-    }
-    
-    .footer-column ul {
-      list-style: none;
-    }
-    
-    .footer-column ul li {
-      margin-bottom: 10px;
-    }
-    
-    .footer-column a {
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
       color: white;
-      text-decoration: none;
-    }
-    
-    .footer-column a:hover {
-      text-decoration: underline;
-    }
-    
-    .social-links {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
       display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .social-links a {
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,0.1);
-      transition: background-color 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-    
-    .social-links a:hover {
-      background-color: rgba(255,255,255,0.2);
-    }
-    
-    .copyright {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.9rem;
-    }
+    .whatsapp-float:hover { transform: scale(1.1); }
     
     /* Responsividade */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1rem; }
-      .section-title { font-size: 1.8rem; }
-      .section-subtitle { font-size: 1rem; }
-      .stat-item { width: 150px; }
-      .donation-card { width: 100%; max-width: 300px; }
-      nav a { margin: 0 8px; font-size: 0.9rem; }
-    }
-    
-    @media (max-width: 480px) {
-      .hero { padding: 60px 15px; }
-      .hero h1 { font-size: 1.8rem; }
-      .container { padding: 40px 15px; }
-      .section-title { font-size: 1.5rem; }
-      nav a { margin: 0 5px; font-size: 0.8rem; }
+      .quem-somos {
+        grid-template-columns: 1fr;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 0.9rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>ONG S.E.R.</h1>
+    <p>Onde você supera seus limites, aprende a empreender e realiza seus sonhos.</p>
+  </header>
+
   <nav>
-    <a href="index.html">Início</a>
-    <a href="index.html#sobre">Sobre</a>
-    <a href="index.html#programas">Programas</a>
+    <a href="#quem-somos">Quem Somos</a>
+    <a href="#galeria">Galeria</a>
     <a href="doacoes.html">Doações</a>
-    <a href="index.html#transparencia">Transparência</a>
-    <a href="index.html#contato">Contato</a>
+    <a href="#transparencia">Transparência</a>
+    <a href="#contato">Contato</a>
     <a href="Login.html">Área Restrita</a>
   </nav>
 
-  <section class="hero">
-    <h1>Transforme Vidas com Sua Doação</h1>
-    <p>Cada contribuição é um passo para construir um futuro melhor para crianças e jovens em situação de vulnerabilidade.</p>
-    <a href="#doar-agora" class="btn">Doar Agora</a>
+  <section id="quem-somos">
+    <h2>Quem Somos</h2>
+    <div class="quem-somos">
+      <img src="banner-projeto-ser.jpg" alt="Projeto S.E.R.">
+      <div class="quem-somos-texto">
+        <h3>Nossa História</h3>
+        <p>Somos uma ONG comprometida com a promoção da dignidade e da esperança para pessoas em situação de vulnerabilidade social, incluindo moradores de rua, crianças, adolescentes e famílias carentes. Nosso objetivo é acolher, orientar e oferecer apoio humano e material àqueles que vivem à margem da sociedade, muitas vezes esquecidos e invisíveis. Atuamos por meio de ações voluntárias, como distribuição de alimentos, roupas, kits de higiene, escuta ativa, oficinas educativas e encaminhamentos para serviços públicos.</p>
+        <p>Mesmo sem estrutura de alojamento, buscamos ser uma ponte entre a necessidade e a oportunidade, promovendo dignidade, respeito e transformação. Acreditamos que pequenos gestos podem gerar grandes mudanças, e que todo ser humano merece ser visto, ouvido e valorizado. Nosso compromisso é estar presentes, estender a mão e abrir caminhos para que vidas sejam restauradas e sonhos, reacendidos. Onde aqui onde você SUPERA seus limites, aprende a EMPREENDER e REALIZA seus sonhos, PROJETO S.E.R.</p>
+        <p>Fundada em 2003, há 22 anos a ONG S.E.R. (Superação, Empreendedorismo e Realização) atua na transformação de vidas através da educação, acolhimento e protagonismo.</p>
+      </div>
+    </div>
   </section>
 
-  <div class="container">
-    <h2 class="section-title">O Impacto da Sua Doação</h2>
-    <p class="section-subtitle">Quando você doa para a ONG S.E.R., você não está apenas contribuindo financeiramente, está investindo diretamente na transformação de vidas e na construção de um futuro mais justo e igualitário.</p>
-    
-    <div class="impact-stats">
-      <div class="stat-item">
-        <div class="stat-number">1.250+</div>
-        <div class="stat-label">Jovens impactados</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">42</div>
-        <div class="stat-label">Voluntários ativos</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">18</div>
-        <div class="stat-label">Eventos realizados</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">8</div>
-        <div class="stat-label">Programas ativos</div>
-      </div>
+  <section id="galeria">
+    <h2>Galeria de Ações</h2>
+    <div class="fotos-acoes">
+      <img src="PHOTO-2025-06-05-12-12-01.jpg" alt="Ação social 1">
+      <img src="PHOTO-2025-06-05-12-12-02.jpg" alt="Ação social 2">
+      <img src="PHOTO-2025-06-05-12-12-56.jpg" alt="Ação social 3">
+      <img src="PHOTO-2025-06-05-12-12-57.jpg" alt="Ação social 4">
+      <img src="PHOTO-2025-06-05-12-12-58.jpg" alt="Ação social 5">
+      <img src="PHOTO-2025-06-05-12-12-59.jpg" alt="Ação social 6">
     </div>
-    
-    <p class="section-subtitle">Com apenas R$ 50 por mês, você pode garantir material didático para uma criança. Com R$ 100, você proporciona um mês de oficinas de empreendedorismo para um jovem.</p>
-  </div>
+  </section>
 
-  <div class="container" id="doar-agora">
-    <h2 class="section-title">Como Você Pode Ajudar</h2>
-    <p class="section-subtitle">Escolha a forma de doação que melhor se adapta às suas possibilidades. Toda contribuição faz diferença!</p>
-    
-    <div class="donation-options">
-      <div class="donation-card">
-        <h3>Doação Mensal</h3>
-        <p>Torne-se um apoiador recorrente e ajude a manter nossos programas continuamente.</p>
-        <a href="#" class="btn">Doar Mensalmente</a>
+  <section id="transparencia">
+    <h2>Transparência</h2>
+    <div class="quem-somos">
+      <div class="quem-somos-texto">
+        <h3>Prestação de Contas</h3>
+        <p>Na ONG S.E.R., acreditamos que a transparência é fundamental para construir confiança com nossos apoiadores e beneficiários.</p>
+        <p>Todos os nossos relatórios financeiros e de atividades são publicados anualmente e estão disponíveis para consulta pública.</p>
+        <p>Somos uma organização certificada como OSCIP (Organização da Sociedade Civil de Interesse Público) e seguimos rigorosamente todas as normas e legislações aplicáveis.</p>
+        <p>Para acessar nossos relatórios completos, entre em contato através do formulário abaixo.</p>
       </div>
-      
-      <div class="donation-card">
-        <h3>Doação Única</h3>
-        <p>Faça uma contribuição pontual do valor que desejar para apoiar nossos projetos.</p>
-        <a href="#" class="btn">Fazer Doação Única</a>
-      </div>
-      
-      <div class="donation-card">
-        <h3>Doação Internacional</h3>
-        <p>Apoie nossos projetos de qualquer lugar do mundo através de transferência internacional.</p>
-        <a href="#" class="btn">Doar do Exterior</a>
-      </div>
-    </div>
-    
-    <div class="donation-options">
-      <div class="donation-card">
-        <h3>Doação Corporativa</h3>
-        <p>Sua empresa pode se tornar parceira e apoiar nossos projetos com responsabilidade social.</p>
-        <a href="#" class="btn">Parceria Empresarial</a>
-      </div>
-      
-      <div class="donation-card">
-        <h3>Doação de Materiais</h3>
-        <p>Doe livros, equipamentos, materiais escolares ou outros itens necessários aos nossos projetos.</p>
-        <a href="#" class="btn">Doar Materiais</a>
-      </div>
-      
-      <div class="donation-card">
-        <h3>Nota Fiscal Solidária</h3>
-        <p>Doe sem gastar: cadastre seu CPF nas suas compras e destine parte dos impostos para nossa causa.</p>
-        <a href="#" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-  </div>
-
-  <section class="testimonials">
-    <h2 class="section-title">Depoimentos de Quem Apoia</h2>
-    <p class="section-subtitle">Conheça as histórias de quem já faz parte desta transformação</p>
-    
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-        <p class="testimonial-text">Doar mensalmente para a ONG S.E.R. me dá a certeza de que estou contribuindo para um futuro melhor. Ver o impacto direto na vida dos jovens é extremamente gratificante.</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Foto de Maria Silva" class="author-avatar">
-          <div class="author-info">
-            <h4>Maria Silva</h4>
-            <p>Doadora mensal há 3 anos</p>
-          </div>
+      <div class="trust-badges" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: center;">
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
+          <i class="fas fa-certificate" style="font-size: 40px; color: #0a6e31;"></i>
+          <p>Certificado OSCIP</p>
         </div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-        <p class="testimonial-text">Como empresa, buscamos parceiros que realmente fazem a diferença. A transparência e o impacto mensurável da ONG S.E.R. nos deram a confiança para estabelecer esta parceria duradoura.</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Carlos Mendes" class="author-avatar">
-          <div class="author-info">
-            <h4>Carlos Mendes</h4>
-            <p>Diretor de Empresa Parceira</p>
-          </div>
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
+          <i class="fas fa-check-circle" style="font-size: 40px; color: #0a6e31;"></i>
+          <p>Auditoria Externa</p>
         </div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-        <p class="testimonial-text">Mesmo morando no exterior, consigo acompanhar de perto como minhas doações são utilizadas. A facilidade de doar internacionalmente e a prestação de contas regular me deixam muito satisfeita.</p>
-        <div class="testimonial-author">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de Ana Ferreira" class="author-avatar">
-          <div class="author-info">
-            <h4>Ana Ferreira</h4>
-            <p>Doadora internacional</p>
-          </div>
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
+          <i class="fas fa-award" style="font-size: 40px; color: #0a6e31;"></i>
+          <p>Selo Transparência</p>
+        </div>
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 10px;">
+          <i class="fas fa-trophy" style="font-size: 40px; color: #0a6e31;"></i>
+          <p>Prêmio Impacto Social</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <section class="volunteer-section">
-      <div class="volunteer-content">
-        <h2 class="section-title">Torne-se um Voluntário</h2>
-        <p class="section-subtitle">Além de doações financeiras, você pode contribuir com seu tempo e habilidades. Junte-se ao nosso time de voluntários e faça parte desta transformação.</p>
-        
-        <form class="volunteer-form" id="volunteerForm">
-          <div class="form-group">
-            <label for="name">Nome Completo</label>
-            <input type="text" id="name" class="form-control" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" class="form-control" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Telefone</label>
-            <input type="tel" id="phone" class="form-control" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="skills">Habilidades e Áreas de Interesse</label>
-            <textarea id="skills" class="form-control" rows="4" required></textarea>
-          </div>
-          
-          <div class="form-group">
-            <label for="availability">Disponibilidade</label>
-            <select id="availability" class="form-control" required>
-              <option value="">Selecione...</option>
-              <option value="weekdays">Dias de semana</option>
-              <option value="weekends">Finais de semana</option>
-              <option value="both">Ambos</option>
-            </select>
-          </div>
-          
-          <div class="form-check">
-            <input type="checkbox" id="terms" required>
-            <label for="terms">Concordo em receber comunicações da ONG S.E.R. e estou ciente da <a href="#">política de privacidade</a>.</label>
-          </div>
-          
-          <button type="submit" class="btn">Quero ser Voluntário</button>
-        </form>
-      </div>
-    </section>
-    
-    <h2 class="section-title">Transparência e Credibilidade</h2>
-    <p class="section-subtitle">A ONG S.E.R. tem compromisso com a transparência e a prestação de contas. Todos os recursos são aplicados com responsabilidade e os resultados são compartilhados regularmente.</p>
-    
-    <div class="trust-badges">
-      <div class="badge-item">
-        <img src="https://via.placeholder.com/150x60?text=Certificado" alt="Certificado de Transparência">
-        <p>Certificado de Transparência</p>
-      </div>
-      <div class="badge-item">
-        <img src="https://via.placeholder.com/150x60?text=Auditoria" alt="Auditoria Externa">
-        <p>Auditoria Externa</p>
-      </div>
-      <div class="badge-item">
-        <img src="https://via.placeholder.com/150x60?text=OSCIP" alt="Certificado OSCIP">
-        <p>Certificado OSCIP</p>
-      </div>
-      <div class="badge-item">
-        <img src="https://via.placeholder.com/150x60?text=Prêmio" alt="Prêmio Impacto Social">
-        <p>Prêmio Impacto Social</p>
-      </div>
-    </div>
-    
-    <div class="faq-section">
-      <h2 class="section-title">Perguntas Frequentes</h2>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Como posso ter certeza que minha doação será bem utilizada?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          <p>A ONG S.E.R. publica relatórios financeiros trimestrais e um relatório anual de atividades, detalhando como cada recurso foi aplicado. Além disso, somos auditados por empresa externa independente e possuímos certificações que atestam nossa transparência.</p>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Posso deduzir minhas doações do imposto de renda?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          <p>Sim! Como somos uma OSCIP (Organização da Sociedade Civil de Interesse Público ), suas doações podem ser deduzidas do Imposto de Renda em até 6% para pessoas físicas e 2% para pessoas jurídicas, conforme legislação vigente.</p>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Como posso fazer uma doação do exterior?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          <p>Aceitamos doações internacionais via PayPal, cartão de crédito internacional ou transferência bancária. Ao clicar em "Doar do Exterior", você será direcionado para uma página com todas as instruções detalhadas em inglês e espanhol.</p>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Posso visitar os projetos da ONG?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          <p>Sim! Realizamos visitas programadas para doadores e interessados conhecerem nossos projetos de perto. Entre em contato pelo e-mail visitas@ongser.org para agendar sua visita.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <section id="contato">
+    <h2>Entre em Contato</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu e-mail" required>
+      <textarea placeholder="Sua mensagem" rows="4" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
   <footer>
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>ONG S.E.R.</h3>
-        <p>Transformando vidas através da educação, acolhimento e protagonismo.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Links Rápidos</h3>
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="index.html#sobre">Quem Somos</a></li>
-          <li><a href="index.html#programas">Programas</a></li>
-          <li><a href="doacoes.html">Doações</a></li>
-          <li><a href="index.html#transparencia">Transparência</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Contato</h3>
-        <ul>
-          <li><i class="fas fa-map-marker-alt"></i> Rua das Flores, 123 - Chapecó/SC</li>
-          <li><i class="fas fa-phone"></i> (49) 3322-1234</li>
-          <li><i class="fas fa-envelope"></i> contato@ongser.org</li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Newsletter</h3>
-        <p>Receba novidades sobre nossos projetos e impacto.</p>
-        <form>
-          <input type="email" placeholder="Seu e-mail" class="form-control" style="margin-bottom: 10px;">
-          <button type="submit" class="btn btn-outline">Inscrever-se</button>
-        </form>
-      </div>
-    </div>
-    
-    <div class="copyright">
-      ONG S.E.R. – Chapecó/SC | CNPJ 07.621.674/0001-52 | Utilidade Pública Nº 4906<br>
-      © 2025 ONG S.E.R. Todos os direitos reservados.
-    </div>
+    ONG S.E.R. – Chapecó/SC | CNPJ 07.621.674/0001-52 | Utilidade Pública Nº 4906
   </footer>
 
+  <a href="https://wa.me/5549989007221" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <script>
-    // Script para abrir/fechar as perguntas frequentes
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        const isOpen = answer.style.display === 'block';
-        
-        answer.style.display = isOpen ? 'none' : 'block';
-        question.querySelector('i').className = isOpen ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
-      });
-    });
-    
-    // Inicialmente, esconder todas as respostas
-    document.querySelectorAll('.faq-answer').forEach(answer => {
-      answer.style.display = 'none';
-    });
-    
-    // Script para o formulário de voluntários
-    document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+    // Script para validação do formulário
+    document.getElementById('contactForm' ).addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Obrigado pelo seu interesse! Em breve entraremos em contato para dar continuidade ao seu cadastro como voluntário.');
+      alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
       this.reset();
     });
   </script>
