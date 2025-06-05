@@ -1,17 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ONG S.E.R. - Onde você supera seus limites, aprende a empreender e realiza seus sonhos. Transformando vidas através da educação, acolhimento e protagonismo.">
   <title>ONG S.E.R.</title>
-  <meta name="description" content="Aqui você pode SER: superar seus limites, empreender e realizar seus sonhos." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4C+6X1Ot6v4lDqw1XG4xzHgFeE61zvvW6CkP5PlxcmjbGiDC1bFOMt3D+mZBWyYtT9BAQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; }
     header {
-      background: url('https://images.unsplash.com/photo-1601597111044-7186d7c1c4ec?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      background: url("https://images.unsplash.com/photo-1601597111044-7186d7c1c4ec?auto=format&fit=crop&w=1350&q=80" ) center/cover no-repeat;
       color: white;
       padding: 120px 20px;
       text-align: center;
@@ -73,6 +74,30 @@
       width: 100%;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .fotos-acoes img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header { padding: 80px 20px; }
+      header h1 { font-size: 2.2rem; }
+      nav { padding: 10px; }
+      nav a { margin: 0 8px; font-size: 0.9rem; }
+      section { padding: 40px 20px; }
+      .grid { gap: 20px; }
+    }
+    
+    @media (max-width: 480px) {
+      header { padding: 60px 15px; }
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 1rem; }
+      nav { padding: 8px 5px; }
+      nav a { margin: 0 5px; font-size: 0.8rem; }
+      section { padding: 30px 15px; }
+      .fotos-acoes { gap: 15px; }
     }
   </style>
 </head>
@@ -83,6 +108,7 @@
     <a href="#doacoes">Doações</a>
     <a href="#transparencia">Transparência</a>
     <a href="#contato">Contato</a>
+    <a href="login.html">Área Restrita</a>
   </nav>
 
   <header>
@@ -126,18 +152,18 @@
   <section>
     <h2>Galeria de Ações</h2>
     <div class="fotos-acoes">
-      <img src="https://ongser.netlify.app/assets/img1.jpg" alt="Ação social 1">
-      <img src="https://ongser.netlify.app/assets/img2.jpg" alt="Ação social 2">
-      <img src="https://ongser.netlify.app/assets/img3.jpg" alt="Ação social 3">
-      <img src="https://ongser.netlify.app/assets/img4.jpg" alt="Ação social 4">
-      <img src="https://ongser.netlify.app/assets/img5.jpg" alt="Ação social 5">
-      <img src="https://ongser.netlify.app/assets/img6.jpg" alt="Ação social 6">
+      <img src="banner-projeto-ser.jpg" alt="Ação social 1 - Banner do Projeto">
+      <img src="banner-projeto-ser.jpg" alt="Ação social 2 - Banner do Projeto">
+      <img src="banner-projeto-ser.jpg" alt="Ação social 3 - Banner do Projeto">
+      <img src="banner-projeto-ser.jpg" alt="Ação social 4 - Banner do Projeto">
+      <img src="banner-projeto-ser.jpg" alt="Ação social 5 - Banner do Projeto">
+      <img src="banner-projeto-ser.jpg" alt="Ação social 6 - Banner do Projeto">
     </div>
   </section>
 
   <section id="contato">
     <h2>Entre em Contato</h2>
-    <form>
+    <form id="contactForm">
       <input type="text" placeholder="Seu nome" required>
       <input type="email" placeholder="Seu e-mail" required>
       <textarea placeholder="Sua mensagem" rows="4" required></textarea>
@@ -152,5 +178,14 @@
   <a href="https://wa.me/5549989007221" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <script>
+    // Script para validação do formulário
+    document.getElementById('contactForm' ).addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
+      this.reset();
+    });
+  </script>
 </body>
 </html>
