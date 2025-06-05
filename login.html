@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acesso restrito para administradores e voluntários da ONG S.E.R.">
+  <title>Login - ONG S.E.R.</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background-color: #f5f5f5; }
+    nav {
+      background: #0a6e31;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1 );
+      padding: 10px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #0a6e31;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      height: 80px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      font-weight: 600;
+      color: #555;
+    }
+    input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+    button {
+      padding: 14px;
+      background-color: #0a6e31;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 10px;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #08802e;
+    }
+    .forgot-password {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .forgot-password a {
+      color: #0a6e31;
+      text-decoration: none;
+    }
+    .register-link {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    .register-link a {
+      color: #0a6e31;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .security-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #777;
+    }
+    footer {
+      background: #0a6e31;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .social-proof img {
+      height: 40px;
+      opacity: 0.7;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 480px) {
+      .container {
+        margin: 40px auto;
+        padding: 20px;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="index.html#sobre">Sobre</a>
+    <a href="index.html#programas">Programas</a>
+    <a href="index.html#doacoes">Doações</a>
+    <a href="index.html#contato">Contato</a>
+  </nav>
+
+  <div class="container">
+    <div class="logo">
+      <h1>ONG S.E.R.</h1>
+    </div>
+    
+    <h1>Acesso Restrito</h1>
+    
+    <form id="loginForm">
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+      </div>
+      
+      <div>
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" placeholder="Sua senha" required>
+      </div>
+      
+      <button type="submit">Entrar <i class="fas fa-sign-in-alt"></i></button>
+    </form>
+    
+    <div class="forgot-password">
+      <a href="#">Esqueceu sua senha?</a>
+    </div>
+    
+    <div class="register-link">
+      Não tem uma conta? <a href="#">Solicite acesso</a>
+    </div>
+    
+    <div class="security-note">
+      <i class="fas fa-lock"></i> Conexão segura - Seus dados estão protegidos
+    </div>
+    
+    <div class="social-proof">
+      <img src="banner-projeto-ser.jpg" alt="Parceiro 1" style="width: 100px; height: 40px; object-fit: cover;">
+      <img src="banner-projeto-ser.jpg" alt="Parceiro 2" style="width: 100px; height: 40px; object-fit: cover;">
+      <img src="banner-projeto-ser.jpg" alt="Parceiro 3" style="width: 100px; height: 40px; object-fit: cover;">
+    </div>
+  </div>
+
+  <footer>
+    ONG S.E.R. – Chapecó/SC | CNPJ 07.621.674/0001-52 | Utilidade Pública Nº 4906
+  </footer>
+
+  <script>
+    // Script para validação do formulário de login
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Simulação de login bem-sucedido
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>
